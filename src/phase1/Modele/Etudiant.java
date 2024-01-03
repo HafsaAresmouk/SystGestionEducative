@@ -1,21 +1,48 @@
-package phase1;
+package phase1.Modele;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Etudiant
 {
+    private int id;
     private String nom;
     private String prenom;
     private String email;
     private int appoge;
     private Filiere filiere;
-    public Etudiant(String nom,String prenom,String email,int appoge)
+    private Map<Module, Double> notes;
+    public Etudiant(){}
+    public Etudiant(String nom,String prenom,String email,int appoge,Filiere filiere)
     {
+
+        this.filiere=filiere;
+        this.prenom=prenom;
+        this.nom=nom;
+        this.appoge=appoge;
+        this.email=email;
+        notes = new HashMap<>();
+    }
+    public Etudiant(int id ,String nom,String prenom,String email,int appoge)
+    {
+
 
         this.prenom=prenom;
         this.nom=nom;
         this.appoge=appoge;
         this.email=email;
     }
+    public void ajouterNoteModule(Module module, double note) {
+        notes.put(module, note);
+    }
 
+    public void supprimerNoteModule(Module module) {
+        notes.remove(module);
+    }
+
+    public double obtenirNoteModule(Module module) {
+        return notes.getOrDefault(module, 0.0);
+    }
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -56,14 +83,15 @@ public class Etudiant
         return filiere;
     }
 
-    @Override
-    public String toString() {
-        return "Etudiant{" +
-                "nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                ", appoge=" + appoge +
-                ", filiere=" + filiere +
-                '}';
+    public int getId()
+    {
+        return id;
     }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+
 }

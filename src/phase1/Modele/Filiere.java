@@ -1,17 +1,44 @@
-package phase1;
+package phase1.Modele;
+
+import java.util.ArrayList;
 
 public class Filiere
-{
-    private String intitul;
-    private  Enseignant responsable;
-    private Departement departement;
 
+{
+   private int id;
+
+    private String intitul;
+    private Enseignant responsable;
+    private Departement departement;
+    ArrayList<Module> modules;
+
+      public Filiere(){}
     public Filiere(String intitul,Enseignant responsable,Departement departement)
     {
         this.departement=departement;
         this.intitul=intitul;
         this.responsable=responsable;
+        modules = new ArrayList<>();
 
+
+    }
+    public void addModule(Module module) {
+        modules.add(module);
+    }
+
+    public void removeModule(Module module) {
+        modules.remove(module);
+    }
+
+    public void setModules(ArrayList<Module> modules)
+    {
+        this.modules = modules;
+    }
+
+    public ArrayList<Module> getModules()
+    {
+
+        return modules;
     }
 
     public void setDepartement(Departement departement) {
@@ -40,14 +67,15 @@ public class Filiere
         return intitul;
     }
 
-    @Override
-    public String toString()
+    public int getId()
     {
-        return "Filiere{" +
-                "intitul='" + intitul + '\'' +
-                ", responsable=" + responsable +
-                ", departement=" + departement +
-                '}';
+        return id;
     }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
 
 }

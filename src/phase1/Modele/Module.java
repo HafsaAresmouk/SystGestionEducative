@@ -1,18 +1,27 @@
-package phase1;
+package phase1.Modele;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Module
 {
+    private int id;
     private String intitule;
 
     private Filiere filiere;
-    private  Enseignant professeur;
+    private Enseignant professeur;
+
+
+    public Module(){}
     public Module(String intitule,Filiere filiere,Enseignant professeur)
     {
         this.filiere=filiere;
 
         this.intitule=intitule;
         this.professeur=professeur;
+
     }
+
 
     public void setIntitule(String intitule)
     {
@@ -38,12 +47,13 @@ public class Module
         return professeur;
     }
 
-    @Override
-    public String toString() {
-        return "Module{" +
-                "intitule='" + intitule + '\'' +
-                ", filiere=" + filiere +
-                ", professeur=" + professeur +
-                '}';
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
     }
 }
